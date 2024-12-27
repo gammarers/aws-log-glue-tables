@@ -1,0 +1,1 @@
+# AWS Log Glue Tables
