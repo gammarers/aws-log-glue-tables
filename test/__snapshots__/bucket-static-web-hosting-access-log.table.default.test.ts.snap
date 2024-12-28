@@ -1,0 +1,180 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BucketStaticWebHostingAccessLogTable default Testing Should match snapshot 1`] = `
+{
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "BucketStaticWebHostingAccessLogTableAccessLogGlueTableF05403E6": {
+      "Properties": {
+        "CatalogId": {
+          "Ref": "AWS::AccountId",
+        },
+        "DatabaseName": "example-database",
+        "TableInput": {
+          "Name": "example-bucket-access-log-table",
+          "Parameters": {
+            "projection.enabled": "true",
+            "projection.timestamp.format": "yyyy/MM/dd",
+            "projection.timestamp.range": "2024/11/01,NOW",
+            "projection.timestamp.type": "date",
+            "storage.location.template": {
+              "Fn::Join": [
+                "",
+                [
+                  "s3://",
+                  {
+                    "Ref": "LogBucketCC3B17E8",
+                  },
+                  "/path/to/location/\${timestamp}/",
+                ],
+              ],
+            },
+          },
+          "PartitionKeys": [
+            {
+              "Name": "timestamp",
+              "Type": "string",
+            },
+          ],
+          "StorageDescriptor": {
+            "Columns": [
+              {
+                "Name": "bucket_owner",
+                "Type": "string",
+              },
+              {
+                "Name": "bucket_name",
+                "Type": "string",
+              },
+              {
+                "Name": "request_date_time",
+                "Type": "string",
+              },
+              {
+                "Name": "remote_ip",
+                "Type": "string",
+              },
+              {
+                "Name": "requester",
+                "Type": "string",
+              },
+              {
+                "Name": "request_id",
+                "Type": "string",
+              },
+              {
+                "Name": "operation",
+                "Type": "string",
+              },
+              {
+                "Name": "key",
+                "Type": "string",
+              },
+              {
+                "Name": "request_uri",
+                "Type": "string",
+              },
+              {
+                "Name": "http_status",
+                "Type": "string",
+              },
+              {
+                "Name": "errorcode",
+                "Type": "string",
+              },
+              {
+                "Name": "bytessent",
+                "Type": "bigint",
+              },
+              {
+                "Name": "object_size",
+                "Type": "bigint",
+              },
+              {
+                "Name": "total_time",
+                "Type": "string",
+              },
+              {
+                "Name": "turn_around_time",
+                "Type": "string",
+              },
+              {
+                "Name": "referrer",
+                "Type": "string",
+              },
+              {
+                "Name": "user_agent",
+                "Type": "string",
+              },
+              {
+                "Name": "version_id",
+                "Type": "string",
+              },
+            ],
+            "InputFormat": "org.apache.hadoop.mapred.TextInputFormat",
+            "Location": {
+              "Fn::Join": [
+                "",
+                [
+                  "s3://",
+                  {
+                    "Ref": "LogBucketCC3B17E8",
+                  },
+                  "/path/to/location/",
+                ],
+              ],
+            },
+            "OutputFormat": "org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat",
+            "SerdeInfo": {
+              "Parameters": {
+                "input.regex": "([^ ]*) ([^ ]*) \\[(.*?)\\] ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ("[^"]*"|-) (-|[0-9]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ("[^"]*"|-) ([^ ]*)(?: ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*))?.*$",
+              },
+              "SerializationLibrary": "org.apache.hadoop.hive.serde2.RegexSerDe",
+            },
+          },
+          "TableType": "EXTERNAL_TABLE",
+        },
+      },
+      "Type": "AWS::Glue::Table",
+    },
+    "LogBucketCC3B17E8": {
+      "DeletionPolicy": "Retain",
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Retain",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
