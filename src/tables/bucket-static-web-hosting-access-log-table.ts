@@ -3,7 +3,7 @@ import * as glue from 'aws-cdk-lib/aws-glue';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import { Construct } from 'constructs';
 
-export interface TimestampRange {
+export interface BucketStaticWebHostingAccessLogTableTimestampRange {
   readonly start: string;
   readonly end?: string;
 }
@@ -14,7 +14,7 @@ export interface BucketStaticWebHostingAccessLogTableProps {
   readonly glueDatabaseName: string;
   readonly glueTableName: string;
   readonly location: string;
-  readonly timestampRage: TimestampRange;
+  readonly timestampRage: BucketStaticWebHostingAccessLogTableTimestampRange;
 }
 
 export class BucketStaticWebHostingAccessLogTable extends Construct {
