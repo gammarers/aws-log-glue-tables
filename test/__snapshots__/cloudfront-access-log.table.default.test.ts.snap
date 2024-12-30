@@ -1,0 +1,242 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CloudFrontAccessLogTable default Testing Should match snapshot 1`] = `
+{
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "CloudFrontAccessLogTableCloudFrontAccessLogGlueTable613BEDF1": {
+      "Properties": {
+        "CatalogId": {
+          "Ref": "AWS::AccountId",
+        },
+        "DatabaseName": "example-database",
+        "TableInput": {
+          "Name": "example-cloudfront-access-log-table",
+          "Parameters": {
+            "classification": "cloudfront",
+            "projection.enabled": "true",
+            "projection.timestamp.format": "yyyy/MM/dd",
+            "projection.timestamp.range": "2024/11/01,NOW",
+            "projection.timestamp.type": "date",
+            "skip.header.line.count": "2",
+            "storage.location.template": {
+              "Fn::Join": [
+                "",
+                [
+                  "s3://",
+                  {
+                    "Ref": "LogBucketCC3B17E8",
+                  },
+                  "/path/to/location/\${timestamp}/",
+                ],
+              ],
+            },
+          },
+          "PartitionKeys": [
+            {
+              "Name": "timestamp",
+              "Type": "string",
+            },
+          ],
+          "StorageDescriptor": {
+            "Columns": [
+              {
+                "Name": "date",
+                "Type": "date",
+              },
+              {
+                "Name": "time",
+                "Type": "string",
+              },
+              {
+                "Name": "x_edge_location",
+                "Type": "string",
+              },
+              {
+                "Name": "sc_bytes",
+                "Type": "bigint",
+              },
+              {
+                "Name": "c_ip",
+                "Type": "string",
+              },
+              {
+                "Name": "cs_method",
+                "Type": "string",
+              },
+              {
+                "Name": "cs_host",
+                "Type": "string",
+              },
+              {
+                "Name": "cs_uri_stem",
+                "Type": "string",
+              },
+              {
+                "Name": "sc_status",
+                "Type": "int",
+              },
+              {
+                "Name": "cs_referrer",
+                "Type": "string",
+              },
+              {
+                "Name": "cs_user_agent",
+                "Type": "string",
+              },
+              {
+                "Name": "cs_uri_query",
+                "Type": "string",
+              },
+              {
+                "Name": "cs_cookie",
+                "Type": "string",
+              },
+              {
+                "Name": "x_edge_result_type",
+                "Type": "string",
+              },
+              {
+                "Name": "x_edge_request_id",
+                "Type": "string",
+              },
+              {
+                "Name": "x_host_header",
+                "Type": "string",
+              },
+              {
+                "Name": "cs_protocol",
+                "Type": "string",
+              },
+              {
+                "Name": "cs_bytes",
+                "Type": "bigint",
+              },
+              {
+                "Name": "time_taken",
+                "Type": "float",
+              },
+              {
+                "Name": "x_forwarded_for",
+                "Type": "string",
+              },
+              {
+                "Name": "ssl_protocol",
+                "Type": "string",
+              },
+              {
+                "Name": "ssl_cipher",
+                "Type": "string",
+              },
+              {
+                "Name": "x_edge_response_result_type",
+                "Type": "string",
+              },
+              {
+                "Name": "cs_protocol_version",
+                "Type": "string",
+              },
+              {
+                "Name": "fle_status",
+                "Type": "string",
+              },
+              {
+                "Name": "fle_encrypted_fields",
+                "Type": "int",
+              },
+              {
+                "Name": "c_port",
+                "Type": "int",
+              },
+              {
+                "Name": "time_to_first_byte",
+                "Type": "float",
+              },
+              {
+                "Name": "x_edge_detailed_result_type",
+                "Type": "string",
+              },
+              {
+                "Name": "sc_content_type",
+                "Type": "string",
+              },
+              {
+                "Name": "sc_content_len",
+                "Type": "bigint",
+              },
+              {
+                "Name": "sc_range_start",
+                "Type": "bigint",
+              },
+              {
+                "Name": "sc_range_end",
+                "Type": "bigint",
+              },
+            ],
+            "InputFormat": "org.apache.hadoop.mapred.TextInputFormat",
+            "Location": {
+              "Fn::Join": [
+                "",
+                [
+                  "s3://",
+                  {
+                    "Ref": "LogBucketCC3B17E8",
+                  },
+                  "/path/to/location/",
+                ],
+              ],
+            },
+            "OutputFormat": "org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat",
+            "SerdeInfo": {
+              "Parameters": {
+                "field.delim": "	",
+              },
+              "SerializationLibrary": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+            },
+          },
+          "TableType": "EXTERNAL_TABLE",
+        },
+      },
+      "Type": "AWS::Glue::Table",
+    },
+    "LogBucketCC3B17E8": {
+      "DeletionPolicy": "Retain",
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Retain",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
