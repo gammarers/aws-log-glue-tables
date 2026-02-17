@@ -43,6 +43,7 @@ new BucketStaticWebHostingAccessLogTable(scope: Construct, id: string, props: Bu
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@gammarers/aws-log-glue-tables.BucketStaticWebHostingAccessLogTable.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@gammarers/aws-log-glue-tables.BucketStaticWebHostingAccessLogTable.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -53,6 +54,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@gammarers/aws-log-glue-tables.BucketStaticWebHostingAccessLogTable.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@gammarers/aws-log-glue-tables.BucketStaticWebHostingAccessLogTable.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -167,6 +189,7 @@ new CloudFrontAccessLogTable(scope: Construct, id: string, props: CloudFrontAcce
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@gammarers/aws-log-glue-tables.CloudFrontAccessLogTable.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@gammarers/aws-log-glue-tables.CloudFrontAccessLogTable.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -177,6 +200,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@gammarers/aws-log-glue-tables.CloudFrontAccessLogTable.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@gammarers/aws-log-glue-tables.CloudFrontAccessLogTable.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
